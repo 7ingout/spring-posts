@@ -1,42 +1,22 @@
 package kr.re.kitri.springposts.service;
 
 import kr.re.kitri.springposts.model.Post;
-import kr.re.kitri.springposts.repository.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class PostService {
-
-    private final PostRepository postRepository;
-
-    public PostService(PostRepository postRepository) {
-        this.postRepository = postRepository;
-    }
+public interface PostService {
 
     // 전체글 보기
-    public List<Post> viewAllPosts() {
-        return postRepository.selectAllPost();
-    }
-
+    List<Post> viewAllPosts();
     // 글 상세보기 by ID
-    public Post viewPostById(long postId) {
-        return postRepository.selectPostById(postId);
-    }
-
+    Post viewPostById(long postId);
     // 글 등록
-    public Post registerPost(Post post) {
-        return postRepository.insertPost(post);
-    }
-
+    Post registerPost(Post post);
     // 글 수정
 
     // 글 삭제
 
-    // 좋아요
-    public Post updateLikesPlusOne(long postId) {
-        return postRepository.updateLikesPlusOne(postId);
-    }
+    // 좋아요..
+    Post updateLikesPlusOne(long postId);
+
 }
