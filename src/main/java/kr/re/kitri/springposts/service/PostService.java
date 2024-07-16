@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class PostService {
 
-    @Autowired
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
+
+    public PostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
 
     // 전체글 보기
     public String viewAllPosts() {
