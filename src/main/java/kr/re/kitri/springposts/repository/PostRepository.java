@@ -24,4 +24,17 @@ public class PostRepository {
     public Post selectPostById(long postId) {
         return new Post(postId, "테스트 제목", "테스트 바디", 0);
     }
+
+    public Post insertPost(Post post) {
+        // 실제 테이블에 인서트 ..
+        // insert into post values (post.getid(), post.getTitle(), post.getBody(), .....);
+        System.out.println("잘 인서트 됐습니다 . .");
+        return post;
+    }
+
+    public Post updateLikesPlusOne(long postId) {
+        // postId에 해당하는 글의 Likes의 수를 1 증가 ..
+        // postId 글의 조회해서 그 글을 리턴한다
+        return new Post(122, "asfds", "asdf", 1);
+    }
 }
