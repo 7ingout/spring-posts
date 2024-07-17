@@ -3,5 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.re.kitri.springposts.repository.PostRepository">
-
+    <select id="selectAllPost" resultType="kr.re.kitri.springposts.model.Post">
+        select id,
+               title,
+               body,
+               likes
+        from post_hj
+    </select>
+    <select id="selectPostById" resultType="kr.re.kitri.springposts.model.Post"
+    parameterType="java.lang.Long">
+        select id,
+               title,
+               body,
+               likes
+        from post_hj
+        where id =#{postId};
+    </select>
+    <insert id="insertPost" parameterType="kr.re.kitri.springposts.model.Post">
+        insert into post_hj (title, body, likes)
+        values (#{title}, #{body}, #{likes});
+    </insert>
 </mapper>

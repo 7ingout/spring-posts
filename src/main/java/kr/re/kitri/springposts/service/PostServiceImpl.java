@@ -2,6 +2,7 @@ package kr.re.kitri.springposts.service;
 
 import kr.re.kitri.springposts.model.Post;
 import kr.re.kitri.springposts.repository.PostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,15 +26,15 @@ public class PostServiceImpl implements PostService {
     }
 
     // 글 등록
-    public Post registerPost(Post post) {
-        return postRepository.insertPost(post);
+    public void registerPost(Post post) {
+        postRepository.insertPost(post);
     }
     // 글 수정
 
     // 글 삭제
 
     // 좋아요..
-    public Post updateLikesPlusOne(long postId) {
-        return postRepository.updateLikesPlusOne(postId);
+    public void updateLikesPlusOne(long postId) {
+        postRepository.updateLikesPlusOne(postId);
     }
 }

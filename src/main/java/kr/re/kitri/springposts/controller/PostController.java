@@ -29,13 +29,13 @@ public class PostController {
     }
 
     @PostMapping("/posts")
-    public Post addPost(@RequestBody Post post) {
-        return postService.registerPost(post);
+    public void addPost(@RequestBody Post post) {
+        postService.registerPost(post);
     }
 
     @PatchMapping("/posts/{postId}/likes")
-    public Post doLike(@PathVariable long postId) {
-        return postService.updateLikesPlusOne(postId);
+    public void doLike(@PathVariable long postId) {
+        postService.updateLikesPlusOne(postId);
     }
 
 }
