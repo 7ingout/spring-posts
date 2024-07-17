@@ -6,7 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -21,25 +23,29 @@ public class PostServiceImpl implements PostService {
     }
 
     // 전체글 보기
-    public List<Post> viewAllPosts() {
+    public Iterable<Post> viewAllPosts() {
         log.info("롬복 좋아요 ..");
-        return postRepository.selectAllPost();
+//        return postRepository.selectAllPost();
+        return postRepository.findAll();
     }
     // 글 상세보기 by ID
     public Post viewPostById(long postId) {
-        return postRepository.selectPostById(postId);
+//        return postRepository.selectPostById(postId);
+        Optional<Post> post = postRepository.findById(postId);
+        return post.orElse(null);
     }
 
     // 글 등록
-    public void registerPost(Post post) {
-        postRepository.insertPost(post);
+    public Post registerPost(Post post) {
+//        postRepository.insertPost(post);
+        return postRepository.save(post);
     }
     // 글 수정
 
     // 글 삭제
 
     // 좋아요..
-    public void updateLikesPlusOne(long postId) {
-        postRepository.updateLikesPlusOne(postId);
-    }
+//    public void updateLikesPlusOne(long postId) {
+//        postRepository.updateLikesPlusOne(postId);
+//    }
 }

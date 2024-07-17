@@ -22,7 +22,7 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public List<Post> allPosts() {
+    public Iterable<Post> allPosts() {
 //        System.out.println(); 이거 쓰지말래요
         log.info("테스트합니다. 로깅 좋아요 ..");
         return postService.viewAllPosts();
@@ -41,7 +41,7 @@ public class PostController {
 
     @PatchMapping("/posts/{postId}/likes")
     public void doLike(@PathVariable long postId) {
-        postService.updateLikesPlusOne(postId);
+//        postService.updateLikesPlusOne(postId);
     }
 
 }
