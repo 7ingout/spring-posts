@@ -3,6 +3,7 @@ package kr.re.kitri.springposts.repository;
 import kr.re.kitri.springposts.model.Post;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
