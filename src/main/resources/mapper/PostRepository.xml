@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
+<!--<!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
 <mapper namespace="kr.re.kitri.springposts.repository.PostRepository">
     <select id="selectAllPost" resultType="kr.re.kitri.springposts.model.Post">
         select id,
@@ -23,4 +23,9 @@
         insert into post_hj (title, body, likes)
         values (#{title}, #{body}, #{likes});
     </insert>
+    <update id="updateLikesPlusOne" parameterType="long">
+        update post_hj
+        set    likes = likes + 1
+        where  id = #{postId};
+    </update>
 </mapper>
