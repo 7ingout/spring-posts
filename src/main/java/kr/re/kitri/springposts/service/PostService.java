@@ -18,6 +18,6 @@ public interface PostService {
     // 글 삭제
 
     // 좋아요..
-    //void updateLikesPlusOne(long postId);
+    void updateLikesPlusOne(long postId);
 
 }

@@ -2,6 +2,7 @@ package kr.re.kitri.springposts.service;
 
 import kr.re.kitri.springposts.model.Post;
 import kr.re.kitri.springposts.repository.PostRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,16 +12,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class PostServiceImpl implements PostService {
 
     // private static final Logger log = LoggerFactory.getLogger(PostServiceImpl.class);
 
     private final PostRepository postRepository;
-
-    public PostServiceImpl(PostRepository postRepository) {
-        this.postRepository = postRepository;
-    }
 
     // 전체글 보기
     public Iterable<Post> viewAllPosts() {
@@ -45,7 +43,7 @@ public class PostServiceImpl implements PostService {
     // 글 삭제
 
     // 좋아요..
-//    public void updateLikesPlusOne(long postId) {
-//        postRepository.updateLikesPlusOne(postId);
-//    }
+    public void updateLikesPlusOne(long postId) {
+       postRepository.increaseLikes(postId);
+    }
 }
