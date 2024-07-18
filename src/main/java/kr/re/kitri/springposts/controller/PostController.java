@@ -8,6 +8,10 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 게시물 컨트롤러 클래스
+ * 게시물 관련 API를 처리합니다.
+ */
 @Slf4j
 @RequiredArgsConstructor
 @RestController
@@ -15,30 +19,46 @@ public class PostController {
 
     private final PostService postService;
 
+    /**
+     * 모든 게시물을 조회합니다.
+     *
+     * @return 모든 게시물 목록
+     */
     @GetMapping("/posts")
     public ResponseEntity<Iterable<Post>> allPosts() {
-//        System.out.println(); 이거 쓰지말래요
-        log.debug("테스트합니다. 로깅 좋아요 ..");
         return ResponseEntity.ok().body(postService.viewAllPosts());
     }
 
+    /**
+     * ID로 게시물을 조회합니다.
+     *
+     * @param postId 조회할 게시물의 ID
+     * @return 조회된 게시물
+     */
     @GetMapping("/posts/{postId}")
     public ResponseEntity<Post> viewPostById(@PathVariable long postId) {
-        log.debug("ID로 게시물을 조회합니다 " + postId);
         return ResponseEntity.ok().body(postService.viewPostById(postId));
     }
 
+    /**
+     * 새로운 게시물을 등록합니다.
+     *
+     * @param post 등록할 게시물의 정보
+     * @return 등록된 게시물
+     */
     @PostMapping("/posts")
     public ResponseEntity<Post> addPost(@RequestBody Post post) {
-        log.debug("새로운 게시물을 등록합니데이" + post.getTitle());
         return ResponseEntity.status(201).body(postService.registerPost(post));
     }
 
+    /**
+     * 게시물에 좋아요를 추가합니다.
+     *
+     * @param postId 좋아요를 추가할 게시물의 ID
+     */
     @PatchMapping("/posts/{postId}/likes")
     public ResponseEntity<Void> doLike(@PathVariable long postId) {
-        log.debug("게시물 조아" + postId);
         postService.updateLikesPlusOne(postId);
         return ResponseEntity.ok().build();
     }
-
 }
