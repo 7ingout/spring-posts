@@ -17,7 +17,7 @@ import java.util.Optional;
 public interface PostRepository extends CrudRepository<Post, Long> {
 
     @Modifying
-    @Query("update post_hj set likes = likes + 1 where id = :postId")
+    @Query("update post_hj_ set likes = likes + 1 where id = :postId")
     void increaseLikes(@Param("postId") long PostId);
 /*    List<Post> selectAllPost();
     Post selectPostById(long postId);
